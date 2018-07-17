@@ -38,4 +38,34 @@ class TweetUtilsSuite extends FunSuite {
     assert(TweetUtils.splitTweet("    This is   a     tweet    ") == expected)
   }
 
+  test("removeUrls returns original list if no url present") {
+    val input = List("This", "is", "a", "tweet")
+    val expected = List("This", "is", "a", "tweet")
+    assert(TweetUtils.removeUrls(input) == expected)
+  }
+
+  test("removeUrls returns list with url removed from single-url list") {
+    val input = List("This", "is", "a", "tweet", "http://something.great")
+    val expected = List("This", "is", "a", "tweet")
+    assert(TweetUtils.removeUrls(input) == expected)
+  }
+
+  test("removeUrls returns list with url removed from multiple-url list") {
+    val input = List("This", "is", "a", "tweet", "http://something.great", "http://somethingelse.great", "http://yetmore.great")
+    val expected = List("This", "is", "a", "tweet")
+    assert(TweetUtils.removeUrls(input) == expected)
+  }
+
+  test("removeUrls returns empty list if only element of list is a url"){
+    val input = List("http://something.great")
+    val expected = List()
+    assert(TweetUtils.removeUrls(input) == expected)
+  }
+
+  test("removeUrls returns empty list if empty list is passed in"){
+    val input = List()
+    val expected = List()
+    assert(TweetUtils.removeUrls(input) == expected)
+  }
+
 }
