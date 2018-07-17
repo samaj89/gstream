@@ -10,7 +10,7 @@ object TweetUtils {
 
   def removeUrls(lst: List[String]): List[String] = lst.filter(w => !w.startsWith("http"))
 
-  def stripSmallWords(s: List[String]): List[String] = ???
+  def stripSmallWords(lst: List[String]): List[String] = lst.filter(w => w.length > 2)
 
   def stripStopWords(s: List[String]): List[String] = ???
 
