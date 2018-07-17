@@ -17,6 +17,6 @@ object TweetUtils {
 
   def stripSmallWords(lst: List[String]): List[String] = lst.filter(w => w.length > 2)
 
-  def stripStopWords(s: List[String]): List[String] = ???
+  def stripStopWords(lst: List[String]): List[String] = lst.filter(w => !stopwords.contains(w))
 
 }
