@@ -6,7 +6,7 @@ package twitter
 
 object TweetUtils {
 
-  def splitTweet(s: String): List[String] = ???
+  def splitTweet(s: String): List[String] = if (s.isEmpty) List() else s.trim.split("\\s+").toList
 
   def removeUrls(s: List[String]): List[String] = ???
 
