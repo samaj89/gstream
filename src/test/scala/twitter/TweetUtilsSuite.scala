@@ -92,4 +92,28 @@ class TweetUtilsSuite extends FunSuite {
     assert(TweetUtils.stripSmallWords(input) == expected)
   }
 
+  test("stripStopWords returns empty list if empty list passed in") {
+    val input = List()
+    val expected = List()
+    assert(TweetUtils.stripStopWords(input) == expected)
+  }
+
+  test("stripStopWords returns empty list if all words are stopwords") {
+    val input = List("all", "of", "these", "words", "are", "gone")
+    val expected = List()
+    assert(TweetUtils.stripStopWords(input) == expected)
+  }
+
+  test("stripStopWords returns original list if no stopwords present") {
+    val input = List("princess", "banana", "hammock")
+    val expected = List("princess", "banana", "hammock")
+    assert(TweetUtils.stripStopWords(input) == expected)
+  }
+
+  test("stripStopWords returns list with all stopwords removed") {
+    val input = List("princess", "giving", "banana", "herself", "hammock", "just")
+    val expected = List("princess", "banana", "hammock")
+    assert(TweetUtils.stripStopWords(input) == expected)
+  }
+
 }
