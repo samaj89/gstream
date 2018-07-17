@@ -68,4 +68,28 @@ class TweetUtilsSuite extends FunSuite {
     assert(TweetUtils.removeUrls(input) == expected)
   }
 
+  test("stripSmallWords returns original list if no small words present") {
+    val input = List("This", "tweet", "has", "all", "long", "words")
+    val expected = List("This", "tweet", "has", "all", "long", "words")
+    assert(TweetUtils.stripSmallWords(input) == expected)
+  }
+
+  test("stripSmallWords returns list with all small words removed") {
+    val input = List("This", "is", "a", "tweet")
+    val expected = List("This", "tweet")
+    assert(TweetUtils.stripSmallWords(input) == expected)
+  }
+
+  test("stripSmallWords returns empty list if all words are small words") {
+    val input = List("Th", "is", "a", "tw")
+    val expected = List()
+    assert(TweetUtils.stripSmallWords(input) == expected)
+  }
+
+  test("stripSmallWords returns empty list if empty list passed in") {
+    val input = List()
+    val expected = List()
+    assert(TweetUtils.stripSmallWords(input) == expected)
+  }
+
 }
