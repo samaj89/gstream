@@ -8,7 +8,7 @@ object TweetUtils {
 
   def splitTweet(s: String): List[String] = if (s.isEmpty) List() else s.trim.split("\\s+").toList
 
-  def removeUrls(s: List[String]): List[String] = ???
+  def removeUrls(lst: List[String]): List[String] = lst.filter(w => !w.startsWith("http"))
 
   def stripSmallWords(s: List[String]): List[String] = ???
 
