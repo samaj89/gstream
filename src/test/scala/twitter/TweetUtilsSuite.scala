@@ -116,4 +116,34 @@ class TweetUtilsSuite extends FunSuite {
     assert(TweetUtils.stripStopWords(input) == expected)
   }
 
+  test("removePunctuation removes unwanted punctuation from a string") {
+    val input = "OMG!!! This is a string; it is great."
+    val expected = "OMG This is a string it is great"
+    assert(TweetUtils.removePunctuation(input) == expected)
+  }
+
+  test("removePunctuation does not remove necessary punctuation from a string") {
+    val input = "Don't remove the apostrophe in don't!"
+    val expected = "Don't remove the apostrophe in don't"
+    assert(TweetUtils.removePunctuation(input) == expected)
+  }
+
+  test("removePunctuation returns same string if no punctuation present") {
+    val input = "No puncutation in here"
+    val expected = "No puncutation in here"
+    assert(TweetUtils.removePunctuation(input) == expected)
+  }
+
+  test("removePunctuation returns empty string if empty string input") {
+    val input = ""
+    val expected = ""
+    assert(TweetUtils.removePunctuation(input) == expected)
+  }
+
+  test("removePunctuation returns empty string if only puncutation present") {
+    val input = "!!???..."
+    val expected = ""
+    assert(TweetUtils.removePunctuation(input) == expected)
+  }
+
 }
