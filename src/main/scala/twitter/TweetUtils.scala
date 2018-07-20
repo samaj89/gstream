@@ -19,6 +19,6 @@ object TweetUtils {
 
   def stripStopWords(lst: List[String]): List[String] = lst.filter(w => !stopwords.contains(w))
 
-  def removePunctuation(s: String): String = ???
+  def removePunctuation(s: String): String = s.replaceAll("[\\p{Punct}&&[^']]|(?<![a-zA-Z])'|'(?![a-zA-Z])", "")
 
 }

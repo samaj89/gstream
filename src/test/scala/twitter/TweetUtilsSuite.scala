@@ -140,9 +140,15 @@ class TweetUtilsSuite extends FunSuite {
     assert(TweetUtils.removePunctuation(input) == expected)
   }
 
-  test("removePunctuation returns empty string if only puncutation present") {
+  test("removePunctuation returns empty string if only punctuation present") {
     val input = "!!???..."
     val expected = ""
+    assert(TweetUtils.removePunctuation(input) == expected)
+  }
+
+  test("removePunctuation removes trailing and leading apostrophes") {
+    val input = "'hello don't remove' all' 'apostrophes"
+    val expected = "hello don't remove all apostrophes"
     assert(TweetUtils.removePunctuation(input) == expected)
   }
 
