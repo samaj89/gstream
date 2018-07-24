@@ -21,4 +21,6 @@ object TweetUtils {
 
   def removePunctuation(s: String): String = s.replaceAll("[\\p{Punct}&&[^']]|(?<![a-zA-Z])'|'(?![a-zA-Z])", "")
 
+  def stemWords(lst: List[String]): List[String] = lst.map(w => PorterStemmer(w)).distinct
+
 }
